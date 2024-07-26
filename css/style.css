@@ -1,0 +1,292 @@
+body{
+    margin:0;
+    font-family: "Noto Sans KR", sans-serif;
+    color:#333;
+}
+a{
+    text-decoration: none;
+    color:#333;
+}
+a.logo{
+    display:block;
+    font-size:30px;
+    font-weight:bold;
+    line-height:80px;
+}
+.gnb{
+    display:flex;
+}
+
+ul.gnb{
+    justify-content: space-between;
+    position:static;
+}
+ul.gnb>li>a{
+    display:block;
+    margin:20px 0;
+    line-height:20px;
+    padding:10px 20px;
+    transition:all 300ms;
+    border-radius:10px;
+}
+ul.gnb>li>a:hover{
+    background:lightblue;
+    font-weight:600;
+}
+/** 햄버거 메뉴 **/
+.hamb{
+    width:25px;
+    display:none;
+}
+.hamb span{
+    display:block;
+    height:2px;
+    background:#000;
+    border-radius:2px;
+    margin-bottom:5px;
+    cursor:pointer;
+}
+
+.change .bar1{
+    transform: translate(0, 7px) rotate(-45deg);
+ }
+ .change .bar2{
+     opacity:0;
+ }
+ .change .bar3{
+    transform: translate(0, -7px) rotate(45deg);
+ }
+
+/************* hero page **********************/
+.hero{
+    height:550px;
+    overflow:hidden;
+    position:relative;
+}
+.hero-in{
+    width:6650px;
+    height:550px;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.ani{
+  animation: slides 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.banner-box{
+    width:1330px;
+    height:550px;
+    float:left;
+    position:relative;
+}
+.banner-box img{
+    max-width: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+.banner-box h1{
+    font-size:90px;
+    margin:100px 0 30px 150px;
+}
+.banner-box p {
+    padding:30px;
+    background:rgba(255,255,255,0.5);
+    width:400px;
+    margin-left:150px;
+    font-size:18px;
+    font-weight:600;
+    line-height:1.2;
+    border-radius:10px;
+}
+
+/********** SECTION best-date ******************/
+section.best-date{
+    padding:80px;
+    /* background-color:#F3EFE9; */
+}
+.bdate{
+    font-size:35px;
+    font-weight:700;
+    font-family: "Caudex", serif;
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.best-date img{
+    width:100%;
+    cursor:pointer;
+}
+.best-date .col-6:first-child, 
+.best-date .col-6:nth-child(2){
+   margin-bottom:30px;
+}
+.best-date .col-6 img{
+    height:258px;
+    width:100%;
+    object-fit:cover;
+}
+.best-date .col-4, .best-date .col-6{
+    overflow:hidden;
+} 
+.best-date .col-4 img, .best-date .col-6 img{
+    transition: all 500ms;
+} 
+.best-date .col-4:hover>img, .best-date .col-6:hover img{
+    opacity:0.6;
+} 
+.best-text{
+    margin-left:15px;
+    margin-right:15px;
+    width:calc(100% - 30px);
+    position:absolute;
+    background:rgba(255,255,255,0.8);
+    left:0;
+    bottom:-130px;
+    padding:40px;
+    transition: all 500ms;
+}
+.best-date .col-4:hover .best-text{
+    bottom:0px;
+}
+
+/*******************LIST********************/
+.list{
+    background-color: #fcfcfc;
+    border-top: 1px solid #EEE;
+    padding-top: 80px;
+}
+.list-title{
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.5;
+    border-bottom: 2px solid #000;
+}
+.list-ul{
+    display: flex;
+    padding-left: 15px;
+    padding-bottom: 40px;
+}
+.list-ul li{
+    margin-right: 30px;
+}
+.list-ul li a{
+    padding: 5px 15px;
+}
+.list-ul li a:hover{
+    font-weight: 700;
+    text-decoration: underline;
+}
+/*** 디자인 폰트 ***/
+.caudex-regular {
+    font-family: "Caudex", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .caudex-bold {
+    font-family: "Caudex", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .caudex-regular-italic {
+    font-family: "Caudex", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .caudex-bold-italic {
+    font-family: "Caudex", serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+@keyframes slides {
+    from{
+        left:0;
+    }
+    to{
+        left: -1330px;
+    }
+}
+
+@keyframes slides2 {
+    from{
+        top:0;
+    }
+    to{
+        top: -300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        padding-left:30px;
+        padding-right:30px;
+    }
+    .right-nav{
+        display:flex;
+        justify-content: flex-end;
+        padding-top:30px;
+        position:relative;
+    }
+    .hamb{
+        display:block;
+        position:absolute;
+        z-index:100;
+    }
+    ul.gnb{
+        display:flex;
+        flex-direction:column;
+        width:100%;
+        top:50px;
+        border:1px solid #ccc;
+        position:absolute;
+        background:#fff;
+        z-index:111;
+    }
+    ul.gnb.flex{
+        display:none;
+    }
+    .ani{
+        animation: slides2 0.4s ease-in-out;
+        animation-fill-mode: forwards;
+      }
+      .hero{
+        height:300px;
+        overflow:hidden;
+        position:relative;
+    }
+    .hero-in{
+        width:100%;
+        height:300px;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .banner-box{
+        width:100%;
+        height:300px;
+        float:left;
+        position:relative;
+    }
+    .banner-box h1{
+        font-size:60px;
+        margin:50px;
+        text-shadow: 0 0 15px rgba(255,255,255,0.15);
+    }
+    .banner-box p{
+        display:none;
+    }
+}
+
+
+/** bset date 
+section .best-date{
+    padding: 20px;
+    background-color:#F3EF 
+*/
