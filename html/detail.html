@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형웹</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/grid.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+   <header>
+       <div class="container">
+           <div class="row">
+               <div class="col-6"><a href="#" class="logo">MY RWD</a></div>
+               <nav class="col-6 right-nav">
+                  <div class="hamb" onclick="viewSub(this);">
+                    <span class="bar1"></span>
+                    <span class="bar2"></span>
+                    <span class="bar3"></span>
+                   </div>
+                   <ul class="gnb flex" id="gnb">
+                      <li><a href="#" class="active">About</a></li>
+                      <li><a href="#">Service</a></li>
+                      <li><a href="#">Portfolio</a></li>
+                      <li><a href="#">Team</a></li>
+                      <li><a href="#">Blog</a></li>
+                      <li><a href="#">Dropdown</a></li>
+                      <li><a href="#">Contact</a></li>
+                   </ul>
+
+               </nav>
+           </div>
+       </div>
+   </header>
+   <section class="detail-hero">
+      <div class="container">
+         <img src="../images/main_banner_3.jpg" alt="banner" class="banner">
+      </div>
+   </section>
+   <div class="container">
+      <div class="row">
+          <div class="col-6 col-m12">
+             <div class="img-box">
+                <div class="b-img">
+                   <img src="../images/pd/001.gif" alt="001">
+                </div>
+                <div class="s-img">
+                   <img src="../images/pd/001.gif" alt="001" class="simg">
+                   <img src="../images/pd/002.gif" alt="002" class="simg">
+                   <img src="../images/pd/003.gif" alt="003" class="simg">
+                   <img src="../images/pd/004.gif" alt="004" class="simg">
+                   <img src="../images/pd/005.gif" alt="005" class="simg">
+                </div>
+             </div>
+          </div>
+          <div class="col-6 col-m12">
+             <form class="title-form">
+                <h1>벨라 러블리원피스</h1>
+                <p class="title-opt">[해외배송 가능상품]</p>
+                <p class="title-content">
+                    간편하게 원피스 하나로 센스있는 그날의 스타일링 완성!
+                    너무 밋밋하지도 않으면서 너무 과하지 않은, 원피스 한장으로 멋내기 성공 :
+                </p>
+                <ul class="deatila-list">
+                   <li><label>소비자가</label><span><del>69,000원</del></span></li>
+                   <li><label>판매가</label>
+                       <span><ins>29,900원</ins></span>
+                       <span class="dwn">57%</span>
+                   </li>
+                   <li><label>배송비</label><span>3,000원 (50,000원 이상 구매시 무료)</span></li>
+                   <li><label>색상</label>
+                       <div class="color-v-box">
+                           <span class="thiscolor" id="thiscolor">* [필수] 색상을 선택하세요.</span>
+                           <div class="color-box">
+                               <input type="radio" name="colors" class="colors" id="black" value="검정">
+                               <label for="black" class="black"></label>
+
+                               <input type="radio" name="colors" id="red" class="colors" value="빨강">
+                               <label for="red" class="red"></label>
+
+                               <input type="radio" name="colors" id="blue" class="colors" value="파랑">
+                               <label for="blue" class="blue"></label>
+
+                               <input type="radio" name="colors" id="white" class="colors" value="흰색">
+                               <label for="white" class="white"></label>
+
+                               <input type="radio" name="colors" id="yellow" class="colors" value="노랑">
+                               <label for="yellow" class="yellow"></label>
+                           </div> 
+                       </div>
+
+                   </li>
+                   <li><label>사이즈</label>
+                       <div class="sbox">
+                           <div class="size-box" onclick="viewdetail()"><span>* [필수] 사이즈를 선택하세요.</span>
+                              <i class="fa-solid fa-angle-down" id="toggle-icon"></i>
+                           </div>
+                           <div class="size-box-detail">
+                              <div class="option" data-value="XS">*** XS ***</div>
+                              <div class="option" data-value="S">*** S ***</div>
+                              <div class="option" data-value="M">*** M ***</div>
+                              <div class="option" data-value="L">*** L ***</div>
+                              <div class="option" data-value="XL">*** XL ***</div>
+                           </div>
+                       </div>
+                   </li>
+                </ul>
+                <div id="total-box">
+
+                </div>
+                <input type="hidden" id="size" name="size" />
+             </form>
+          </div>
+      </div>
+   </div>
+   <section class="customer container mt-60">
+    <div class="row">
+        <div class="col-4 col-m12">
+           <h1 class="customer-title caudex-bold">Customer Center</h1>
+           <p class="big-text"><a href="tel:1500-4544">1500-4544</a></p>
+           <div class="text-text">
+               <p>전화상담 AM 10:00 ~ AM 10:01</p>
+               <p>(게시판, 카카오톡 AM 09:00 ~ AM 09: 01)</p>
+               <p>(토/일/공휴일/주중 휴무)</p>
+           </div>
+        </div>
+        <div class="col-4 col-m12">
+           <h1 class="customer-title caudex-bold">Delivery</h1>
+           <p class="big-text">반품주소 (CJ대한통운 택배)</p>
+           <div class="text-text">
+              <p>경기도 김포시 고촌읍 전호리 748 CJ대한통운 리더스대리점 내 패스트박스(물리안)</p>
+           </div>
+           <button type="button">택배사 배송조회 바로가기</button>
+        </div>
+        <div class="col-4 col-m12">
+           <h1 class="customer-title caudex-bold">Bank Info</h1>
+           <p class="big-text">예금주 : 주식회사 내옷닷컴</p>
+           <div class="text-text">
+              <p>국민 : 01000-1212-12121 | 농협 : 312-1234-12345</p> 
+              <p>우리 : 1234-12345-6454</p> 
+           </div>
+        </div>
+    </div>
+</section>
+<footer>
+   <nav class="footer-nav">
+      <a href="#">이용약관</a>
+      <a href="#"><strong>개인정보 처리방침</strong></a>
+   </nav>
+   <div class="info">
+      <span>상호 : 주식회사 내옷닷컴</span>
+      <span>대표 : 나대표</span>
+      <span>서울시 여러분 내가 왕초</span>
+      <span>TEL : 0521-1526</span>
+      <span>FAX : 1234-1234</span>  
+   </div>
+   <div class="escrow">
+      <img src="../images/footer_escrow.jpg" alt="에스크로">
+      <span>안전거래를 위해 KB에스크로의 구매안전(에스크로)에 가입하여 서비스를 제공하고 있습니다.</span>
+   </div>
+   <p class="copyright">Copyright 2024 &copy; wein's all rights reserved.</p>
+</footer>
+<script src="../js/detail.js"></script>
+</body>
+</html>
+    
+</body>
+</html>

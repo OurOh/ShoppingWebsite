@@ -31,7 +31,7 @@ let products = [];
 
 //json 가져오는 함수
 function fetchProducts(category) {
-   fetch('../js/pd.js')
+   fetch('../js/pd.json')
    .then(response => response.json())
    .then(data => { 
        products = data;
@@ -60,10 +60,10 @@ function displayProducts(category) {
          productData += `
          <div class="col-3 col-m6 my-30">
               <div class="pdbox">
-                 <a href="#" class="pd-link">
+                 <a href="detail.html?pid=${filterProducts[i].id}" class="pd-link">
                     <img src="${filterProducts[i].img}" alt="001">
                  </a>
-                    <h4 class="pd-title"><a href="#">${filterProducts[i].pdname}</a></h4>
+                    <h4 class="pd-title"><a href="detail.html?pid=${filterProducts[i].id}">${filterProducts[i].pdname}</a></h4>
                     <p><del>${formatLocale(filterProducts[i].delprice)}</del></p>
                     <p>${formatLocale(filterProducts[i].price)}</p>
                     <div class="colorbox">
