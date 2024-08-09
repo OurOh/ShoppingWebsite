@@ -28,53 +28,67 @@ function slideShow(){
 slideShow();
 
 let products = [];
-let productData = "";
+
 //json 가져오는 함수
-function fetchProducts() {
-   fetch('./js/pd.json')
+function fetchProducts(category) {
+   fetch('../js/pd.js')
    .then(response => response.json())
    .then(data => { 
        products = data;
-       for(let i = 0; i < products.length; i++) {
-
-         let colors = "";
-         let banners = "";
-
-         for(let n = 0; n < products[i].color.length; n++) {
-            colors += `<span class="${products[i].color[n]}"></span> `;
-         }
-   
-         for(let m = 0; m < products[i].banner.length; m++) {
-            banners += `<span class="${products[i].banner[m]}"></span> `;
-         }
-
-         productData += `
-          <div class="col-3 col-m6 my-30">
-               <div class="pdbox">
-                  <a href="#" class="pd-link">
-                     <img src="${products[i].img}" alt="001">
-                  </a>
-                     <h4 class="pd-title"><a href="#">${products[i].pdname}</a></h4>
-                     <p><del>${formatLocale(products[i].delprice)}</del></p>
-                     <p>${formatLocale(products[i].price)}</p>
-                     <div class="colorbox">
-                        ${colors}
-                     </div>
-                     <div class="banner-icon">
-                        ${banners}
-                     </div>
-               </div>   
-            </div>
-         `;
-       }
-
-       document.getElementById("pdlist").innerHTML = productData;
+       displayProducts(category);
    })
    .catch(error => console.log(error));
 }
 
-fetchProducts();
+function displayProducts(category) {
+   let productData = "";
+   let filterProducts = (category === '전체보기' || category == '')? 
+                            products : 
+                            products.filter(product => product.category === category);  
+      console.log(filterProducts);
+      for(let i = 0; i < filterProducts.length; i++) {
+         let colors = "";
+         for(let n = 0; n < filterProducts[i].color.length; n++){
+            colors += `<span class="${filterProducts[i].color[n]}"></span> `;
+         }
+
+         let banners = "";
+         for(let m = 0; m <filterProducts[i].banner.length; m++) {
+            banners += `<span class="${filterProducts[i].banner[m]}"></span> `;
+         }
+
+         productData += `
+         <div class="col-3 col-m6 my-30">
+              <div class="pdbox">
+                 <a href="#" class="pd-link">
+                    <img src="${filterProducts[i].img}" alt="001">
+                 </a>
+                    <h4 class="pd-title"><a href="#">${filterProducts[i].pdname}</a></h4>
+                    <p><del>${formatLocale(filterProducts[i].delprice)}</del></p>
+                    <p>${formatLocale(filterProducts[i].price)}</p>
+                    <div class="colorbox">
+                       ${colors}
+                    </div>
+                    <div class="banner-icon">
+                       ${banners}
+                    </div>
+              </div>   
+           </div>
+        `;
+       }
+       document.getElementById("pdlist").innerHTML = productData;
+}
+
+fetchProducts('');
+
+function filterProducts(category ){
+  // e.preventDefault();
+   fetchProducts(category);
+}
 
 function formatLocale(val) {
-   return val.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+   return val.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+   //1 단어의 경계가 아닌 위치를 찾는다. \B  
+   //2.뒤에 3자리 숫자가 한 번 이상 나오고 
+   //3.그 뒤에 다른 숫자가 오지 않는 위치 찾아서 쉼표
 }

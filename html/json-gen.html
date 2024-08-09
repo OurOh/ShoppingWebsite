@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+      function getRandomElements(arr) {
+          const count = Math.floor(Math.random()*(arr.length + 1));
+          const stuffled = arr.sort(()=> 0.5 - Math.random());
+          return stuffled.slice(0, count);
+      }
+
+      const colors = ["black", "green", "gray", "pink", "khaki", "blue"];
+      const banners = ["new", "hit", "event"];
+
+      const products = [];
+
+      for(let i = 1; i <= 20; i++) {
+          const product = {
+             id: i ,
+             pdname: `상품 ${i} `,
+             delprice: `${(Math.floor(Math.random()*50)+20)*1000}원`,
+             price: `${(Math.floor(Math.random()*20)+10)*1000}원`,
+             color: getRandomElements(colors),
+             banner: getRandomElements(banners),
+             img: `images/pd/${String(i).padStart(3, '0')}.gif`
+          };
+          products.push(product);
+      }
+
+      document.write(JSON.stringify(products, null, 4));
+    </script>
+</body>
+</html>
