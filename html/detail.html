@@ -108,61 +108,78 @@
                        </div>
                    </li>
                 </ul>
-                <div id="total-box">
-
-                </div>
-                <input type="hidden" id="size" name="size" />
-             </form>
-          </div>
-      </div>
-   </div>
-   <section class="customer container mt-60">
-    <div class="row">
-        <div class="col-4 col-m12">
-           <h1 class="customer-title caudex-bold">Customer Center</h1>
-           <p class="big-text"><a href="tel:1500-4544">1500-4544</a></p>
-           <div class="text-text">
-               <p>전화상담 AM 10:00 ~ AM 10:01</p>
-               <p>(게시판, 카카오톡 AM 09:00 ~ AM 09: 01)</p>
-               <p>(토/일/공휴일/주중 휴무)</p>
-           </div>
-        </div>
-        <div class="col-4 col-m12">
-           <h1 class="customer-title caudex-bold">Delivery</h1>
-           <p class="big-text">반품주소 (CJ대한통운 택배)</p>
-           <div class="text-text">
-              <p>경기도 김포시 고촌읍 전호리 748 CJ대한통운 리더스대리점 내 패스트박스(물리안)</p>
-           </div>
-           <button type="button">택배사 배송조회 바로가기</button>
-        </div>
-        <div class="col-4 col-m12">
-           <h1 class="customer-title caudex-bold">Bank Info</h1>
-           <p class="big-text">예금주 : 주식회사 내옷닷컴</p>
-           <div class="text-text">
-              <p>국민 : 01000-1212-12121 | 농협 : 312-1234-12345</p> 
-              <p>우리 : 1234-12345-6454</p> 
-           </div>
+                <div id="total-box" class="display-none">
+                  <div class="option-box">
+                      <label id="selected-option">수량</label>
+                      <div class="quantity-box">
+                         <span><i class="fa-solid fa-caret-down"></i></span>
+                         <div><input type="text" name="quintity" id="quintity" value="1" min="1" max="10"></div>
+                         <span><i class="fa-solid fa-caret-up"></i></span>
+                      </div>
+                      <p id="p-price">34,000원</p>
+                      <div class="closeinit">
+                         <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                      </div>
+                  </div>
+                  <p class="total-price"><span>총 상품 금액 : </span><span id="total-price">1,000,000</span> 원</p>
+              </div>
+              <input type="hidden" id="or-pd-price" value="69000">
+              <input type="hidden" id="pd-price" value="29900">
+              <input type="hidden" id="size" name="size" />
+              <input type="hidden" id="total-Amount" name="total-Amount">
+           </form>
         </div>
     </div>
+ </div>
+ <section class="customer container mt-60">
+  <div class="row">
+      <div class="col-4 col-m12">
+         <h1 class="customer-title caudex-bold">Customer Center</h1>
+         <p class="big-text"><a href="tel:1500-4544">1500-4544</a></p>
+         <div class="text-text">
+             <p>전화상담 AM 10:00 ~ AM 10:01</p>
+             <p>(게시판, 카카오톡 AM 09:00 ~ AM 09: 01)</p>
+             <p>(토/일/공휴일/주중 휴무)</p>
+         </div>
+      </div>
+      <div class="col-4 col-m12">
+         <h1 class="customer-title caudex-bold">Delivery</h1>
+         <p class="big-text">반품주소 (CJ대한통운 택배)</p>
+         <div class="text-text">
+            <p>경기도 김포시 고촌읍 전호리 748 CJ대한통운 리더스대리점 내 패스트박스(물리안)</p>
+         </div>
+         <button type="button">택배사 배송조회 바로가기</button>
+      </div>
+      <div class="col-4 col-m12">
+         <h1 class="customer-title caudex-bold">Bank Info</h1>
+         <p class="big-text">예금주 : 주식회사 내옷닷컴</p>
+         <div class="text-text">
+            <p>국민 : 01000-1212-12121 | 농협 : 312-1234-12345</p> 
+            <p>우리 : 1234-12345-6454</p> 
+         </div>
+      </div>
+  </div>
 </section>
+
 <footer>
-   <nav class="footer-nav">
-      <a href="#">이용약관</a>
-      <a href="#"><strong>개인정보 처리방침</strong></a>
-   </nav>
-   <div class="info">
-      <span>상호 : 주식회사 내옷닷컴</span>
-      <span>대표 : 나대표</span>
-      <span>서울시 여러분 내가 왕초</span>
-      <span>TEL : 0521-1526</span>
-      <span>FAX : 1234-1234</span>  
-   </div>
-   <div class="escrow">
-      <img src="../images/footer_escrow.jpg" alt="에스크로">
-      <span>안전거래를 위해 KB에스크로의 구매안전(에스크로)에 가입하여 서비스를 제공하고 있습니다.</span>
-   </div>
-   <p class="copyright">Copyright 2024 &copy; wein's all rights reserved.</p>
+ <nav class="footer-nav">
+    <a href="#">이용약관</a>
+    <a href="#"><strong>개인정보 처리방침</strong></a>
+ </nav>
+ <div class="info">
+    <span>상호 : 주식회사 내옷닷컴</span>
+    <span>대표 : 나대표</span>
+    <span>서울시 여러분 내가 왕초</span>
+    <span>TEL : 0521-1526</span>
+    <span>FAX : 1234-1234</span>  
+ </div>
+ <div class="escrow">
+    <img src="images/footer_escrow.jpg" alt="에스크로">
+    <span>안전거래를 위해 KB에스크로의 구매안전(에스크로)에 가입하여 서비스를 제공하고 있습니다.</span>
+ </div>
+ <p class="copyright">Copyright 2024 &copy; wein's all rights reserved.</p>
 </footer>
+
 <script src="../js/detail.js"></script>
 </body>
 </html>
