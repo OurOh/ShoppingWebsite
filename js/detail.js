@@ -15,6 +15,9 @@ const selectedOption = document.getElementById("selected-option");
 const totalAmountTxt = document.getElementById("total-price");
 const totalAmountInput= document.getElementById("totalAmount");
 
+//전체 주문 목록을 저장할 배열
+const orderList = [];
+
 let selectColor = '';
 let selectSize = ''; 
 let selectPrice = 0; //선택한 가격 * 수량
@@ -101,17 +104,52 @@ document.querySelector(".inc").addEventListener('click', ()=>{
 
 function updateTotalBox() {
    if(selectColor && selectSize) {
-      totalBox.classList.remove("display-none");
-      selectedOption.innerHTML = "* 색상 : "+ selectColor + "<br>* 사이즈 : " + selectSize; 
-      const quantity = parseInt(quantityBox.value);
+      //totalBox.classList.remove("display-none");
+      //selectedOption.innerHTML = "* 색상 : "+ selectColor + "<br>* 사이즈 : " + selectSize; 
+      if(order.quantity == '') {order.quantity}
       selectPrice = price * quantity;
+      
+      //새로운 주문 정보를 객체로 저장
+      const order = {
+         color: selectColor,
+         size: selectSize,
+         quantity: quantity,
+         price: selectPrice
+      }
+ 
+     //새주문이 기존주문과 같을 경우
+     const existOrder = orderList.findIndex( o => o.color === order.color && o.size === order.size);
+      if(existOrder > -1) {
+         orderList[existOrder].quantity += order.quantity;
+         orderList[existOrder].price += order.price;    
+      }else{
+         orderList.push(order);
+      }
+      //전체 주문 및 금액 표시
+      console.log
+      const totalAmount = orderList.reduce((sum,o)=> sum + o.price, 0);
+      totalBox.classList.remove("display-none");
+
+      for();
+
       document.querySelector(".select-price").value=selectPrice;
       document.querySelector(".p-price").textContent = selectPrice.toLocaleString() + "원";
    
-      totalAmountTxt.textContent = selectPrice.toLocaleString();
+      totalAmountTxt.textContent = totalAmout.toLocaleString + "원";
       totalAmountInput.textContent = selectPrice;
    }
 }
+
+//x를 눌러 상품 금액 제거
+document.querySelector(".closeinit").addEventListener("click", (event)=>{
+   event.preventDefault();
+   selectColor="";
+   selectSize="";
+   quantityBox.value=1;
+   sizeBox.textContent = "* [필수] 사이즈를 선택하세요.";
+   thisColor.textContent = "* [필수] 색상을 선택하세요."; 
+
+});
 
 
 //백분율 구하기
