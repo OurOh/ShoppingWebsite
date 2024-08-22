@@ -397,7 +397,7 @@ footer{
     display:flex;
 }
 .s-img img{
-    max-width:98.5px;
+    max-width:400px;
     cursor:pointer;
     border-bottom:2px solid #fff;
     border-left:2px solid #fff;
@@ -530,62 +530,7 @@ input[type=radio]:checked+label{
     color:#fff;
 }
 
-.option-box{
-    display:flex;
-    padding-top: 30px;
-    padding-bottom:30px;
-    border-bottom:1px solid #999;
-}
-.option-box p{
-    font-size:14px;
-    font-weight:bold;
-    color:#999;
-    line-height:30px;
-    padding-left:30px;
-    padding-right:0px;
-}
-.option-box label{
-    width:120px;
-    font-size:13px;
-}
- .quantity-box span{
-    display:block;
-    float:left;
-    width:30px;
-    height:30px;
-    border:1px solid #333;
-    font-size:20px;
-    text-align:center;
-    line-height:30px;
-    cursor:pointer;
- }
- .quantity-box>div{
-    border-top:1px solid #333;
-    border-bottom:1px solid #333;
-    width:40px;
-    height:30px;
-    float:left;
- }
- .quantity-box input[type=text]{
-    outline:none;
-    border:none;
-    padding:5px;
- }
- .closeinit{
-    margin-left:15px;
-    font-size:20px;
-    line-height:30px;
- }
-.total-price{
-    padding-top:20px;
-    text-align:right;
-}
-.total-price span:last-child{
-    font-weight:800;
-}
-.display-none{
-    display:none;
-}
+
 
 @keyframes slides {
     from{
@@ -664,14 +609,4 @@ input[type=radio]:checked+label{
     .banner-box p{
         display:none;
     }
-
-    /** best date **/
-    section.best-date{
-        padding:20px;
-        /* background-color:#F3EFE9; */
-    }
-    .m-mb30{
-        margin-bottom:30px;
-    }
 }
-

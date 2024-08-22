@@ -21,16 +21,12 @@ const orderList = [];
 let selectColor = '';
 let selectSize = ''; 
 let selectPrice = 0; //선택한 가격 * 수량
-let totalAmount = 0; //총 금액
 
 
 //가격 가져오기
 const orPrice = document.getElementById("or-pd-price").value; 
 const price = document.getElementById("pd-price").value; //가격설정
 const sale = calcPercent(orPrice, price);  //할인률 구하기
-
-//수량 가져오기
-const quantityBox = document.getElementById("quintity");
 
 document.querySelector(".dwn").textContent = sale + "%";
 
@@ -44,7 +40,6 @@ colorRadios.forEach( radio => {
    radio.addEventListener('change', (event)=>{
        selectColor = event.target.value;
        thisColor.textContent = selectColor;
-       updateTotalBox();
    });
 });
 
@@ -77,7 +72,6 @@ options.forEach(option => {
       //클릭한 곳에 selected를 추가함
       e.target.classList.add("selected");
       sizeBox.textContent = `사이즈 : ${selectSize}`;
-      document.getElementById("size").value = selectSize;
       sizeBoxDetail.style.display="none";
       toggleIcon.classList.remove("fa-angle-up");
       toggleIcon.classList.add("fa-angle-down");
@@ -85,28 +79,9 @@ options.forEach(option => {
    });
 });
 
-//증가, 감소 이벤트
-document.querySelector(".dec").addEventListener('click', ()=>{
-   let quantity = parseInt(quantityBox.value);
-   if(quantity > 1) {
-      quantityBox.value = quantity - 1;
-      updateTotalBox()
-   }
-});
-
-document.querySelector(".inc").addEventListener('click', ()=>{
-    let quantity = parseInt(quantityBox.value);
-    if(quantity < 10) {
-       quantityBox.value = quantity + 1;
-       updateTotalBox()
-    }
- });
-
 function updateTotalBox() {
    if(selectColor && selectSize) {
-      //totalBox.classList.remove("display-none");
-      //selectedOption.innerHTML = "* 색상 : "+ selectColor + "<br>* 사이즈 : " + selectSize; 
-      if(order.quantity == '') {order.quantity}
+      let quantity = 1;
       selectPrice = price * quantity;
       
       //새로운 주문 정보를 객체로 저장
@@ -125,22 +100,99 @@ function updateTotalBox() {
       }else{
          orderList.push(order);
       }
-      //전체 주문 및 금액 표시
-      console.log
-      const totalAmount = orderList.reduce((sum,o)=> sum + o.price, 0);
-      totalBox.classList.remove("display-none");
-
-      for();
-
-      document.querySelector(".select-price").value=selectPrice;
-      document.querySelector(".p-price").textContent = selectPrice.toLocaleString() + "원";
-   
-      totalAmountTxt.textContent = totalAmout.toLocaleString + "원";
-      totalAmountInput.textContent = selectPrice;
-   }
+     //전체 주문 및 금액 표시 함수 실행
+     renderOrders();
+   } //end if
 }
 
+function renderOrders(){
+  
+  const orderBox = document.getElementById("orderbox");
+  let totalAmount = 0;
+  orderBox.innerHTML = '';
+  
+  orderList.forEach((order, index)=>{
+      totalAmount += order.price;
+  
+      const orderHtml = `                
+      <div class="option-box">
+          <label id="selected-option">색상: ${order.color} <br>사이즈: ${order.size}</label>
+          <div class="quantity-box">
+             <span class="dec"><i class="fa-solid fa-caret-down"></i></span>
+             <div><input type="text" name="quintity" id="quintity" value="${order.quantity}" min="1" max="10"></div>
+             <span class="inc"><i class="fa-solid fa-caret-up"></i></span>
+          </div>
+          <p class="p-price">${order.price.toLocaleString()}원</p>
+          <div class="closeinit">
+             <a href="#"><i class="fa-solid fa-xmark"></i></a>
+          </div>
+          <input type="hidden" name="select-price" class="select-price">
+      </div>`;
+      orderBox.innerHTML += orderHtml;
+  });
+
+  totalAmountTxt.textContent = totalAmount.toLocaleString() + "원"; 
+  totalAmountInput.value = totalAmount;
+
+  clickEventHandler();
+
+}
+
+function clickEventHandler(){
+   const decButtons = document.querySelectorAll(".dec");
+   const incButtons = document.querySelectorAll(".inc");
+   const closeButtons = document.querySelectorAll(".closeinit a");
+
+   decButtons.forEach((button, index)=>{
+      button.addEventListener("click",()=> updateQuantity(index, -1))
+   });
+   incButtons.forEach((button, index)=>{
+      button.addEventListener("click",()=> updateQuantity(index, -1))
+   });
+   closeButtons.forEach((button, index)=>{
+      button.addEventListener("click", (e)=>{
+         e.preventDefault();
+         orderList.splice(index, 1);
+         renderOrders(index);
+      })
+   })
+}
+
+function removeOrder(){
+   orderList.splice(index, 1);
+   renderOrders();
+}
+
+function updateQuantity(index, d){
+   const order = orderList[index];
+   order.quantity += d;
+   if(order.quantity < 1) order.quantity = 1;
+   if(order.quantity > 10) order.quantity = 10;
+   order.price = order.quantity * price;
+   renderOrders();
+}
+
+//증가, 감소 이벤트
+/*
+document.querySelector(".dec").addEventListener('click', ()=>{
+   let quantity = parseInt(quantityBox.value);
+   if(quantity > 1) {
+      quantityBox.value = quantity - 1;
+      updateTotalBox()
+   }
+});
+
+document.querySelector(".inc").addEventListener('click', ()=>{
+    let quantity = parseInt(quantityBox.value);
+    if(quantity < 10) {
+       quantityBox.value = quantity + 1;
+       updateTotalBox()
+    }
+ });
+*/
+
 //x를 눌러 상품 금액 제거
+/*
 document.querySelector(".closeinit").addEventListener("click", (event)=>{
    event.preventDefault();
    selectColor="";
@@ -150,7 +202,7 @@ document.querySelector(".closeinit").addEventListener("click", (event)=>{
    thisColor.textContent = "* [필수] 색상을 선택하세요."; 
 
 });
-
+*/
 
 //백분율 구하기
 function calcPercent(or, nr) {
