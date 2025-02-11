@@ -1,4 +1,4 @@
-# ShoppingWebsite  
+# ShoppingWebsite-Frontend  
 **프론트엔드 중심의 쇼핑몰 웹사이트 제작 개인프로젝트**  
 
 ---
